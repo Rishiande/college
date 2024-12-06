@@ -176,5 +176,5 @@ def main():
         st.session_state.messages.append({"role": "assistant", "content": response})
 
 # Run the app
-if __name__ == "__main__":
-    main()
+if _name_ == "_main_":
+    app.run(host="0.0.0.0", port=8080)
