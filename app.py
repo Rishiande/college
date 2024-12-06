@@ -10,24 +10,6 @@ from langchain.prompts import PromptTemplate
 from google.cloud import storage
 import google.generativeai as genai
 
-# Load environment variables from .env file
-load_dotenv()
-
-# Access credentials from environment variables
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-
-# Check for missing credentials
-if not GOOGLE_API_KEY or not GOOGLE_APPLICATION_CREDENTIALS:
-    raise ValueError("Google API key or Application Credentials not found. Check your .env file.")
-
-# Configure environment variables
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
-os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
-
-# Configure Google Generative AI
-genai.configure(api_key=GOOGLE_API_KEY)
-
 # Function to download a file from GCS
 def download_file_from_bucket(bucket_name, source_blob_name, destination_file_name):
     """Download a file from the GCS bucket."""
