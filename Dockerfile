@@ -1,16 +1,10 @@
-FROM python:3.9-slim
+FROM python:3.10
 
-# Set the working directory
+EXPOSE 8080
 WORKDIR /app
 
-# Copy all files to the working directory
-COPY . .
+COPY . ./
 
-# Install dependencies from requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Expose the port that Streamlit uses
-EXPOSE 8080
-
-# Run the Streamlit app
-CMD ["streamlit", "run", "app.py", "--server.port=8080", "--server.enableCORS=false"]
+ENTRYPOINT ["streamlit", "run", "college.py", "--server.port=8080", "--server.address=0.0.0.0"]
